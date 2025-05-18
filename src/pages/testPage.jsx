@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 
 export default function TestPage(){
     const[count,setCount]=useState(0)
@@ -38,6 +38,39 @@ export default function TestPage(){
                     </button>
                 </div>
             </div>
+        </div>
+    )
+}*/
+
+import { useState } from "react";
+import mediaUpload from "../utils/mediaUpload";
+export default function TestPage(){
+
+    const[image,setImage]=useState(null)
+
+    
+    function fileUpload(){
+      mediaUpload(image).then(
+        (res)=>{
+            console.log(res)
+        }
+      ).catch(
+        (res)=>{
+            console.log(res)
+        }
+      )
+      
+    }
+
+    return(
+        <div className="w-full h-screen flex justify-center items-center flex-col">
+            <input type="file" className="file-input file-input-bordered w-full max-w-xs" 
+            onChange={(e)=>{
+               //console.log(e.target.files)
+               setImage(e.target.files)
+            }}
+            />
+            <button onClick={fileUpload} className="bg-green-500 text-white font-bold py-2 px-4 rounded">Upload</button>
         </div>
     )
 }
