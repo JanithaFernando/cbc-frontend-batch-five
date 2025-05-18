@@ -2,6 +2,8 @@ import {useEffect,useState} from "react"
 import { sampleProducts } from "../../assets/sampleData"
 import axios from "axios"
 import { Link} from 'react-router-dom'
+import { FaTrash } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 
 export default function AdminProductsPage(){
     const[products,setProducts]=useState(sampleProducts)
@@ -14,7 +16,7 @@ export default function AdminProductsPage(){
 
    
     return(
-        <div className="w-full h-full max-h-full overflow-y-scroll bg-red-900 relative">
+        <div className="w-full h-full max-h-full overflow-y-scroll relative">
             <Link to="/admin/add-product" className="absolute text-xl cursor-pointer bottom-5 right-5 bg-green-500 text-white font-bold py-2 px-4 rounded text-center flex justify-center items-center">+</Link>
             <table className="w-full text-center">
                 <thead>
@@ -25,6 +27,7 @@ export default function AdminProductsPage(){
                         <th>Labelled Price</th>
                         <th>Price</th>
                         <th>Stock</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +42,7 @@ export default function AdminProductsPage(){
                                     <td>{item.labelledPrice}</td>
                                     <td>{item.price}</td>
                                     <td>{item.stock}</td>
+                                    <td><div className="flex justify-center items-center"><FaTrash /><FaEdit /></div></td>
                                 </tr>
                              )
                             }
