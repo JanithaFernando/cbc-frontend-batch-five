@@ -8,7 +8,7 @@ export default function AddProductPage(){
 
     const [productId, setProductId]=useState('')
     const [name,setName]=useState('')
-    const [altNames,setAltNames]=useState('')
+    const [altNames,setAltNames]=useState('')//meka ""
     const [description, setDescription]=useState('')
     const [images,setImages]=useState([])
     const [labelledPrice, setLabelledPrice]=useState(0)
