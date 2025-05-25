@@ -23,7 +23,7 @@ function App() {
           <Route path="/signup" element={<RegisterPage/>}/>
           <Route path="/admin/*" element={<AdminPage/>}/>
           <Route path="/test" element={<TestPage/>}/>
-          <Route path="/*" element={<h1>404 Not Found</h1>}/>
+          <Route path="/*" element={<HomePage/>}/>
         </Routes>
       </div>
     </BrowserRouter>
