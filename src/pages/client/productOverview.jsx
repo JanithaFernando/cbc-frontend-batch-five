@@ -24,8 +24,15 @@ export default function ProductOverviewPage(){
         }
     ,[]);
     return(
-        <div>
-            {JSON.stringify(product)}
+        <>
+        <div className="w-full h-full flex">
+           <div className="w-[50%] h-full">
+
+           </div>
+           <div className="w-[50%] bg-blue-900 h-full">
+
+           </div>
         </div>
+        </>
     )
 }
