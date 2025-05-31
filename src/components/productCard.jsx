@@ -1,5 +1,7 @@
 //import "./productCard.css"
 
+import { Link } from "react-router-dom";
+
 /*export default function ProductCard(props){*/
    // console.log(props)
    /* return(
@@ -22,12 +24,12 @@
 
 export default function ProductCard({ product }) {
   return (
-    <div className="w-[300px] h-[450px] bg-white shadow-lg rounded-lg overflow-hidden m-4 flex flex-col transition-transform transform hover:scale-105 duration-300">
+    <Link to={"/overview/"+ product.productId} className="w-[300px] h-[450px] bg-white shadow-lg rounded-lg overflow-hidden m-4 flex flex-col transition-transform transform hover:scale-105 duration-300">
       
       {/* Product Image */}
       <div className="h-[200px] bg-gray-100 flex items-center justify-center overflow-hidden">
         <img
-          src={product.images?.[0] || "/placeholder.png"}
+          src={product.images?.[0] || "/placeholder.png"}   //check images are exists in image array, if images are there then get 1st image otherwise placeholder.png
           alt={product.name}
           className="object-cover w-full h-full"
         />
@@ -55,22 +57,22 @@ export default function ProductCard({ product }) {
               <span className="text-sm line-through text-gray-500">Rs {product.labelledPrice}</span>
             )}
           </div>
-          <p className={`text-sm mt-1 ${product.isAvailable ? "text-green-600" : "text-red-600"}`}>
-            {product.isAvailable ? "In Stock" : "Out of Stock"}
+          <p className={`text-sm mt-1 ${product.isAvailable && product.stock>0  ? "text-green-600" : "text-red-600"}`}>
+            {product.isAvailable && product.stock>0 ? "In Stock" : "Out of Stock"}
           </p>
         </div>
 
         {/* Action Button */}
         <button
           className={`mt-4 w-full py-2 rounded-md text-white text-sm font-medium ${
-            product.isAvailable ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-400 cursor-not-allowed"
+            product.isAvailable  && product.stock>0  ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-400 cursor-not-allowed"
           }`}
-          disabled={!product.isAvailable}
+          disabled={!product.isAvailable || product.stock<=0 }
         >
-          {product.isAvailable ? "Add to Cart" : "Unavailable"}
+          {product.isAvailable && product.stock>0? "Add to Cart" : "Unavailable"}
         </button>
       </div>
-    </div>
+    </Link>
   );
 }
 
