@@ -4,6 +4,8 @@ import {useParams} from "react-router-dom"
 import toast from "react-hot-toast"
 import ImageSlider from "../../components/imageSlider"
 import Loading from "../../components/loading"
+import { getCart,addToCart,removeFromCart } from "../../utils/cart"
+
 
 export default function ProductOverviewPage(){
 
@@ -56,7 +58,13 @@ export default function ProductOverviewPage(){
 
                             }
                             <div className="w-full flex justify-center items-center mt-4">
-                                <button className="w-[200px] h-[50px] mx-4 cursor-pointer bg-accent text-white rounded-2xl hover:bg-accent/80 transition-all duration-300">Add to Cart</button>
+                                <button className="w-[200px] h-[50px] mx-4 cursor-pointer bg-accent text-white rounded-2xl hover:bg-accent/80 transition-all duration-300" onClick={()=>{
+                                    console.log("Old Cart")
+                                    console.log(getCart())
+                                    addToCart(product,1)
+                                    console.log("New Cart")
+                                    console.log(getCart())
+                                }} >Add to Cart</button>
                                 <button className="w-[200px] h-[50px] mx-4 cursor-pointer bg-accent text-white rounded-2xl hover:bg-accent/80 transition-all duration-300">Buy Now</button>
                             </div>
                         </div>
